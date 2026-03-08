@@ -1,0 +1,437 @@
+{
+  "info": {
+    "name": "Payroll Android App API",
+    "description": "REST API for Android Payroll Application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"employee@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "login"]
+            }
+          }
+        },
+        {
+          "name": "Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/profile",
+              "host": ["{{base_url}}"],
+              "path": ["api", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Profile Update",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"mobile_number\": \"+977-9841234567\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profile/update",
+              "host": ["{{base_url}}"],
+              "path": ["api", "profile", "update"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/logout",
+              "host": ["{{base_url}}"],
+              "path": ["api", "logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attendance",
+      "item": [
+        {
+          "name": "Mark Attendance (Teacher)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dates\": [\"2024-02-21\"],\n  \"attendance_type\": \"period_wise\",\n  \"periods\": [\"P\", \"P\", \"A\", \"P\", \"P\", \"P\", \"A\", \"P\"],\n  \"remarks\": \"Attended all classes except period 3 and 7\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/attendance/mark",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", "mark"]
+            }
+          }
+        },
+        {
+          "name": "Mark Attendance (Staff)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dates\": [\"2024-02-21\"],\n  \"attendance_type\": \"full_day\",\n  \"status\": \"present\",\n  \"remarks\": \"Present at work\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/attendance/mark",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", "mark"]
+            }
+          }
+        },
+        {
+          "name": "Today Attendance",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/attendance/today",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", "today"]
+            }
+          }
+        },
+        {
+          "name": "Monthly Attendance",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/attendance/monthly?month=2&year=2024",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", "monthly"],
+              "query": [
+                {
+                  "key": "month",
+                  "value": "2"
+                },
+                {
+                  "key": "year",
+                  "value": "2024"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Yearly Attendance",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/attendance/yearly?year=2024",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", "yearly"],
+              "query": [
+                {
+                  "key": "year",
+                  "value": "2024"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Leave",
+      "item": [
+        {
+          "name": "Apply Leave",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"leave_type\": \"casual_leave\",\n  \"start_date\": \"2024-03-01\",\n  \"end_date\": \"2024-03-05\",\n  \"total_days\": 5,\n  \"reason\": \"Personal emergency\",\n  \"contact_during_leave\": \"+977-9841234567\",\n  \"medical_certificate\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/leave/apply",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leave", "apply"]
+            }
+          }
+        },
+        {
+          "name": "List Leaves",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/leave/list?status=pending&year=2024",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leave", "list"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                },
+                {
+                  "key": "year",
+                  "value": "2024"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Cancel Leave",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"leave_id\": 1,\n  \"reason\": \"No longer needed\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/leave/cancel",
+              "host": ["{{base_url}}"],
+              "path": ["api", "leave", "cancel"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Salary",
+      "item": [
+        {
+          "name": "Monthly Salary",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/salary/monthly?month=2&year=2024",
+              "host": ["{{base_url}}"],
+              "path": ["api", "salary", "monthly"],
+              "query": [
+                {
+                  "key": "month",
+                  "value": "2"
+                },
+                {
+                  "key": "year",
+                  "value": "2024"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Salary Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/salary/status?year=2024",
+              "host": ["{{base_url}}"],
+              "path": ["api", "salary", "status"],
+              "query": [
+                {
+                  "key": "year",
+                  "value": "2024"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Salary Receipt",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/salary/receipt/2",
+              "host": ["{{base_url}}"],
+              "path": ["api", "salary", "receipt", "2"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Monthly Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/report/monthly?month=2&year=2024",
+              "host": ["{{base_url}}"],
+              "path": ["api", "report", "monthly"],
+              "query": [
+                {
+                  "key": "month",
+                  "value": "2"
+                },
+                {
+                  "key": "year",
+                  "value": "2024"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Yearly Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/report/yearly?year=2024",
+              "host": ["{{base_url}}"],
+              "path": ["api", "report", "yearly"],
+              "query": [
+                {
+                  "key": "year",
+                  "value": "2024"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
