@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -57,3 +58,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# PayRoll-System
+This Payroll System allows organizations to track employee attendance, calculate payroll accurately, and maintain a transparent salary management process. Ideal for colleges and Universites. Having hybrid system web based and Android for Attendance .
+>>>>>>> 4f6c219866eb2c9c9545185a999f172b81539388
